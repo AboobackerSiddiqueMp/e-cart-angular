@@ -27,7 +27,16 @@ export class WishlistComponent implements OnInit{
     })
   }
   removeItem(id:any){
-    alert("hi")
+    this.api.removeItemFromWishlist(id).subscribe({
+      next:(res:any)=>{
+        this.api.getWishlistCount()
+        alert("Item removed from wishlist successfully")
+        this.getAllItemsFromWishlist();
+      },
+      error:(res:any)=>{
+        console.log(res)
+      }
+    })
   }
 
 }

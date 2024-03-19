@@ -8,11 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-  constructor(private route:Router){}
+  wishlistlength:number = 0;
+  constructor(private route:Router, private api:AppService){}
   loginUserName:any;
   ngOnInit(): void {
     if(sessionStorage.getItem("username")){
       this.loginUserName = sessionStorage.getItem("username")
+      this.api.wishlistCount.subscribe((res:any)=>{
+        this.wishlistlength = res;
+      });
     }
     else{
       this.loginUserName =""

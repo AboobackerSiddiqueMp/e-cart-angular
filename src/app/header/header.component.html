@@ -19,7 +19,7 @@
           <ul class="navbar-nav  mb-2 mb-lg-0">
             <li>
               <a class="nav-link active" routerLink="/wishlist">
-                  <button class="btn btn-outline-light"><i class="fa-solid fa-heart fa-beat me-2"></i>wishlist<span class="badge bg-secondary ms-2">8</span></button>
+                  <button class="btn btn-outline-light"><i class="fa-solid fa-heart fa-beat me-2"></i>wishlist<span class="badge bg-secondary ms-2">{{wishlistlength}}</span></button>
               </a>
             </li>
             <li>
@@ -28,7 +28,7 @@
               </a>
             </li>
             <li *ngIf="!loginUserName" >
-              <a class="nav-link active" routerLink="user/login">
+              <a class="nav-link active" routerLink="/user/login">
                   <button class="btn btn-outline-light"><i class="fa-solid fa-user me-2"></i>login</button>
               </a>
             </li>
