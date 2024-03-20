@@ -12,7 +12,7 @@ import { PagenotfoundComponent } from './pagenotfound/pagenotfound.component';
 const routes: Routes = [
   { path: "", component: AllProductComponent },
   { path: "wishlist", component: WishlistComponent },
-  { path: "cart", component: CartComponent },
+  { path: "user/cart", component: CartComponent },
   { path: "checkout", component: CheckoutComponent },
   { path: "user/login", component: LoginComponent },
   { path: 'user/register', component: RegisterComponent },

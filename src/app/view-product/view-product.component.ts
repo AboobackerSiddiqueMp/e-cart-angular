@@ -29,4 +29,21 @@ export class ViewProductComponent implements OnInit {
       }
     })
   }
+  addItemTocart(product: any) {
+    if (sessionStorage.getItem("token")) {
+      Object.assign(product, { quantity: 1 })
+      this.api.addToCartApi(product).subscribe({
+        next: (res: any) => {
+          this.api.getCartCount()
+          alert("Product added successfully")
+        },
+        error: (res: any) => {
+          console.log(res)
+        }
+      })
+    }
+    else {
+      alert("Please login")
+    }
+  }
 }

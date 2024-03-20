@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
   wishlistlength:number = 0;
+  cartLength:number = 0;
   constructor(private route:Router, private api:AppService){}
   loginUserName:any;
   ngOnInit(): void {
@@ -17,6 +18,9 @@ export class HeaderComponent implements OnInit {
       this.api.wishlistCount.subscribe((res:any)=>{
         this.wishlistlength = res;
       });
+      this.api.cartCount.subscribe((res:any)=>{
+        this.cartLength = res
+      })
     }
     else{
       this.loginUserName =""

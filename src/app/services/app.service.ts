@@ -11,6 +11,7 @@ export class AppService {
   constructor(private http: HttpClient) {
     if(sessionStorage.getItem('token')){
       this.getWishlistCount();
+      this.getCartCount();
     }
    }
 
@@ -24,10 +25,17 @@ export class AppService {
     return { headers }
   }
   wishlistCount = new BehaviorSubject(0)
+  cartCount = new BehaviorSubject(0)
 
   getWishlistCount(){
     this.getWishlistItemApi().subscribe((res:any)=>{
      this.wishlistCount.next(res.length);
+    })
+  }
+
+  getCartCount(){
+    this.getCartApi().subscribe((res:any)=>{
+      this.cartCount.next(res.length)
     })
   }
 
@@ -56,5 +64,13 @@ export class AppService {
   }
   addToCartApi(product:any){
     return this.http.post(`${this.server_url}/add-cart`,product,this.addTokenHeader())
+  }
+
+  getCartApi(){
+    return this.http.get(`${this.server_url}/cart/all-product`,this.addTokenHeader())
+  }
+
+  removeFromcart(id:any){
+    return this.http.delete(`${this.server_url}/cart/remove/${id}`,this.addTokenHeader())
   }
 }

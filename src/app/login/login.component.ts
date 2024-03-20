@@ -23,6 +23,8 @@ export class LoginComponent {
     else {
       this.api.loginApi(this.loginDetails).subscribe({
         next: (res: any) => {
+          console.log("====token in login===")
+          console.log(res)
           sessionStorage.setItem("username", res.existingUser.username)
           sessionStorage.setItem("token", res.token)
           this.route.navigateByUrl('')
