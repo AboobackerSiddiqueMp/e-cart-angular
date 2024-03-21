@@ -73,4 +73,13 @@ export class AppService {
   removeFromcart(id:any){
     return this.http.delete(`${this.server_url}/cart/remove/${id}`,this.addTokenHeader())
   }
+  incrementCartItem(id:any){
+    return this.http.get(`${this.server_url}/cart/increment/${id}`,this.addTokenHeader())
+  }
+  decrementCartItem(id:any){
+    return this.http.get(`${this.server_url}/cart/decrement/${id}`, this.addTokenHeader())
+  }
+  emptycart(){
+    return this.http.delete(`${this.server_url}/empty-cart`, this.addTokenHeader())
+  }
 }

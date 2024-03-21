@@ -49,4 +49,40 @@ export class CartComponent implements OnInit {
     }
   }
 
+  decrementCartProduct(id: any) {
+    this.api.decrementCartItem(id).subscribe({
+      next:(res:any)=>{
+        this.getAllCartItems();
+        this.api.getCartCount()
+      },
+      error:(res:any)=>{
+        console.log(res)
+      }
+    })
+
+  }
+  incrementCartProduct(id: any) {
+    this.api.incrementCartItem(id).subscribe({
+      next:(res:any)=>{
+        this.getAllCartItems();
+        this.api.getCartCount()
+      },
+      error:(res:any)=>{
+        console.log(res)
+      }
+    })
+
+  }
+  emptyCartItems(){
+    this.api.emptycart().subscribe({
+      next:(res:any)=>{
+        this.getAllCartItems();
+        this.api.getCartCount()
+      },
+      error:(res:any)=>{
+        console.log(res)
+      }
+    })
+
+  }
 }
