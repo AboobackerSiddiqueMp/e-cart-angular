@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppService } from '../services/app.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-cart',
@@ -9,7 +10,7 @@ import { AppService } from '../services/app.service';
 export class CartComponent implements OnInit {
   allProduct: any = [];
   cartTotal: any = 0;
-  constructor(private api: AppService) { }
+  constructor(private api: AppService, private route:Router) { }
   ngOnInit(): void {
     this.getAllCartItems()
   }
@@ -85,4 +86,9 @@ export class CartComponent implements OnInit {
     })
 
   }
+  checkout(){
+    sessionStorage.setItem("total",JSON.stringify(this.cartTotal))
+    this.route.navigateByUrl("checkout")
+  }
+
 }
